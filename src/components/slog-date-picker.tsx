@@ -10,7 +10,7 @@ type SlogDatePickerProps = DatePickerProps & {
   selectsRange?: boolean;
 };
 
-const SlogDatePicker: React.FC<SlogDatePickerProps> = ({
+export const SlogDatePicker: React.FC<SlogDatePickerProps> = ({
   className = "",
   placeholder = "Select a date",
   onChange,
@@ -95,5 +95,3 @@ const SlogDatePicker: React.FC<SlogDatePickerProps> = ({
     </div>
   );
 };
-
-export default SlogDatePicker;
