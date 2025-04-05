@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - API_ENDPOINT=http://backend:3001
+
+  backend:
+    build:
+      context: ../path-to-backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"

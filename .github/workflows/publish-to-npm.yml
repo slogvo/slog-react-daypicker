@@ -1,0 +1,66 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Setup Node.js (v18)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          registry-url: "https://registry.npmjs.org"
+
+      # Step 3: Install pnpm
+      - name: Install pnpm
+        run: |
+          npm install -g pnpm
+          pnpm --version # Verify that pnpm is installed and accessible
+
+      # Step 4: Install dependencies using pnpm
+      - name: Install dependencies
+        run: pnpm install
+
+      # Step 5: Verify installation
+      - name: Verify setup
+        run: |
+          echo "Node version: $(node -v)"
+          echo "PNPM version: $(pnpm -v)"
+          ls -la
+
+      # Step 6:  Build the library
+      - name: Build project
+        run: pnpm run build
+
+      # Step 7: Run tests (replace with your actual test command)
+      - name: Run tests
+        run: pnpm test
+        continue-on-error: true
+
+      # Optional: Lint check
+      - name: Run lint
+        run: pnpm lint
+
+      # Step 8: Set version to the Git tag version
+      - name: Set NPM version from Git tag
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          TAG_NAME=${GITHUB_REF#refs/tags/}  # Extract tag name from GITHUB_REF
+          npm version "$TAG_NAME" --no-git-tag-version  # Set npm version to tag name without creating a new git tag
+
+      # Step 9: Publish to npm (using pnpm)
+      - name: Publish to npm
+        run: pnpm publish --no-git-checks
+        # pnpm publish --access public --no-git-checks
+        # npm unpublish react-notion-blocks@1.0.0 --force

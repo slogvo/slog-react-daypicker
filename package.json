@@ -1,0 +1,84 @@
+{
+  "name": "react-notion-blocks",
+  "version": "2.0.3",
+  "type": "module",
+  "description": "A library for mapping Notion blocks to React components",
+  "author": "Your Name",
+  "license": "MIT",
+  "types": "./dist/index.d.ts",
+  "main": "dist/index.umd.cjs",
+  "module": "dist/index.es.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    },
+    "./style.css": "./dist/index.css"
+  },
+  "keywords": [
+    "notion",
+    "notion-blog",
+    "react",
+    "react-19",
+    "vite",
+    "react-vite",
+    "mapper",
+    "blocks"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slogvo/notion-mapper"
+  },
+  "files": [
+    "dist",
+    "dist/**/*"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "better-react-mathjax": "^2.1.0",
+    "prismjs": "^1.29.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@tailwindcss/vite": "^4.0.9",
+    "@types/node": "^22.13.5",
+    "@types/prismjs": "^1.26.5",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@types/rollup": "^0.54.0",
+    "@vitejs/plugin-react-swc": "^3.8.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.9",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0",
+    "vite-plugin-dts": "^4.5.3"
+  }
+}
