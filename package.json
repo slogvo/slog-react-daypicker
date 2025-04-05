@@ -1,8 +1,8 @@
 {
-  "name": "react-notion-blocks",
-  "version": "2.0.3",
+  "name": "slogdev-react-datepicker",
+  "version": "0.0.1",
   "type": "module",
-  "description": "A library for mapping Notion blocks to React components",
+  "description": "A visually refined and customizable React date picker component, built on top of react-date-picker to better suit modern UI standards and design systems.",
   "author": "Your Name",
   "license": "MIT",
   "types": "./dist/index.d.ts",
