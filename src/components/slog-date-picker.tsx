@@ -2,12 +2,11 @@ import React, { useRef, useState } from "react";
 import type { DatePickerProps } from "react-datepicker";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../styles/index.css";
 
 type SlogDatePickerProps = DatePickerProps & {
   className?: string;
   placeholder?: string;
-  selectsRange?: boolean;
+  selectsRange?: any;
 };
 
 export const SlogDatePicker: React.FC<SlogDatePickerProps> = ({
@@ -23,10 +22,7 @@ export const SlogDatePicker: React.FC<SlogDatePickerProps> = ({
 
   const datePickerRef = useRef<DatePicker | null>(null);
 
-  const handleChange = (
-    date: Date | [Date | null, Date | null] | null,
-    event?: React.SyntheticEvent<any>
-  ) => {
+  const handleChange = (date: any, event?: any) => {
     if (selectsRange) {
       if (Array.isArray(date)) {
         setStartDate(date[0]);
@@ -58,6 +54,7 @@ export const SlogDatePicker: React.FC<SlogDatePickerProps> = ({
         endDate={endDate}
         timeFormat="HH:mm"
         timeIntervals={15}
+        timeCaption="Giờ"
         dateFormat="dd-MM-yyyy HH:mm"
         className={`cursor-pointer w-full px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-primary-500 focus:border-primary-500 ${className}`}
         {...rest}

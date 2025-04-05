@@ -1,5 +1,5 @@
 import { JSX } from "react";
-import SlogDatePicker from "./components/slog-date-picker";
+import { SlogDatePicker } from "./components/slog-date-picker";
 
 const App = (): JSX.Element => {
   return (
