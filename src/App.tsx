@@ -1,6 +1,5 @@
 import { JSX } from "react";
 import SlogDatePicker from "./components/slog-date-picker";
-import "./styles/index.css";
 
 const App = (): JSX.Element => {
   return (
